@@ -28,9 +28,9 @@ struct ContentView: View {
                     .cornerRadius(10)
             })
         }
-        .sheet(isPresented: $showARView, content: {
+        .sheet(isPresented: $showARView) {
             ARContentView()
-        })
+        }
     }
 }
 
@@ -44,8 +44,9 @@ struct ARViewContainer: UIViewRepresentable {
     func updateUIView(_ uiView: ARView, context: Context) {}
 }
 
+
 struct ARContentView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @State private var isGameOver = false
     @StateObject var viewModel = ARContentViewModel()
     
     var body: some View {
@@ -53,18 +54,19 @@ struct ARContentView: View {
             ARViewContainer()
                 .edgesIgnoringSafeArea(.all)
             
-            if viewModel.isGameOver {
-                GameOverView(isGameOver: $viewModel.isGameOver)
+            if isGameOver {
+                GameOverView(isGameOver: $isGameOver)
             }
         }
         .onAppear {
             viewModel.setup()
             viewModel.onGameOver = {
-                self.presentationMode.wrappedValue.dismiss()
+                isGameOver = true
             }
         }
     }
 }
+
 
 class ARContentViewModel: ObservableObject {
     @Published var isGameOver = false
