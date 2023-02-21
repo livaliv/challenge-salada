@@ -11,6 +11,7 @@
 		5A27A9AB29A4781E00C54D7F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A27A9AA29A4781E00C54D7F /* ContentView.swift */; };
 		5A27A9AD29A4782000C54D7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A27A9AC29A4782000C54D7F /* Assets.xcassets */; };
 		5A27A9B029A4782000C54D7F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A27A9AF29A4782000C54D7F /* Preview Assets.xcassets */; };
+		5A27A9BA29A4795300C54D7F /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A27A9B929A4795300C54D7F /* GameOverView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		5A27A9AA29A4781E00C54D7F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5A27A9AC29A4782000C54D7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A27A9AF29A4782000C54D7F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5A27A9B929A4795300C54D7F /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +54,8 @@
 			isa = PBXGroup;
 			children = (
 				5A27A9A829A4781E00C54D7F /* ChallengeSalADAApp.swift */,
-				5A27A9AA29A4781E00C54D7F /* ContentView.swift */,
 				5A27A9AC29A4782000C54D7F /* Assets.xcassets */,
+				5A27A9B629A478EC00C54D7F /* View */,
 				5A27A9AE29A4782000C54D7F /* Preview Content */,
 			);
 			path = ChallengeSalADA;
@@ -65,6 +67,15 @@
 				5A27A9AF29A4782000C54D7F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5A27A9B629A478EC00C54D7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5A27A9AA29A4781E00C54D7F /* ContentView.swift */,
+				5A27A9B929A4795300C54D7F /* GameOverView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A27A9AB29A4781E00C54D7F /* ContentView.swift in Sources */,
+				5A27A9BA29A4795300C54D7F /* GameOverView.swift in Sources */,
 				5A27A9A929A4781E00C54D7F /* ChallengeSalADAApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +282,7 @@
 				DEVELOPMENT_TEAM = VNH67NDAE6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs the camera to properly work the AR functionality.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +312,7 @@
 				DEVELOPMENT_TEAM = VNH67NDAE6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs the camera to properly work the AR functionality.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
