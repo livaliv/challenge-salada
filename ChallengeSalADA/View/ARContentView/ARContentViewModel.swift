@@ -11,7 +11,6 @@ import SwiftUI
 
 class ARContentViewModel: ObservableObject {
     @Published var isGameOver = false
-    @Published var gameStarted = false
     var onGameOver: (() -> Void)?
     
     func setup() {
@@ -24,7 +23,6 @@ class ARContentViewModel: ObservableObject {
     }
     
     func handleGameStarted() {
-        gameStarted = true
     }
     
     var gameOverLink: NavigationLink<EmptyView, ContentView>? {

@@ -11,11 +11,22 @@ import SwiftUI
 
 struct ARContentViewRepresentable: UIViewRepresentable {
     let customArView = CustomARView()
+    var gameStarted = false
 
     func makeUIView(context: Context) -> ARView {
+        context.coordinator.view = customArView
+        customArView.addGestureRecognizer(UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.removeEntity)))
         return customArView
     }
     
-    func updateUIView(_ uiView: ARView, context: Context) {}
+    func updateUIView(_ uiView: ARView, context: Context) {
+        if gameStarted {
+            customArView.startTimer()
+        }
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator()
+    }
 
 }

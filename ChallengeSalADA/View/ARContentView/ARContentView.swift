@@ -15,7 +15,7 @@ struct ARContentView: View {
 
     var body: some View {
         ZStack {
-            ARContentViewRepresentable()
+            ARContentViewRepresentable(gameStarted: isPresented)
                 .edgesIgnoringSafeArea(.all)
             
             if viewModel.isGameOver {
