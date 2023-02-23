@@ -29,9 +29,11 @@ struct ContentView: View {
             })
             .opacity(isShowingAR ? 0 : 1) // Hide button if isShowingAR is true
             .animation(.default)
-            
+
+
             if isShowingAR {
                 ARContentView(isPresented: $isShowingAR)
+                    .environmentObject(ARContentViewModel())
             }
         }
     }
@@ -49,7 +51,7 @@ struct ContentView: View {
     
     struct ARContentView: View {
         @Binding var isPresented: Bool
-        @StateObject var viewModel = ARContentViewModel()
+        @EnvironmentObject var viewModel: ARContentViewModel
         
         var body: some View {
             ZStack {
@@ -59,6 +61,7 @@ struct ContentView: View {
                 if viewModel.isGameOver {
                     GameOverView(isGameOver: $viewModel.isGameOver)
                 }
+                viewModel.gameOverLink
             }
             .opacity(0)
             .onAppear {
@@ -89,6 +92,23 @@ class ARContentViewModel: ObservableObject {
     func handleGameOver() {
         isGameOver = true
         onGameOver?()
+    }
+    
+    var gameOverLink: NavigationLink<EmptyView, ContentView>? {
+        let binding = Binding(
+            get: { self.isGameOver },
+            set: { self.isGameOver = $0 }
+        )
+        return NavigationLink(
+            destination: ContentView(),
+            label: { EmptyView() }
+        )
+        .onReceive($isGameOver) { _ in
+            // Perform some action when isGameOver changes
+            if self.isGameOver {
+                self.onGameOver?()
+            }
+        } as? NavigationLink<EmptyView, ContentView>
     }
 }
 

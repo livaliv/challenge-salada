@@ -27,6 +27,15 @@ struct GameOverView: View {
                     .background(Color.secondary)
                     .cornerRadius(10)
             })
+            .padding()
+            NavigationLink("", destination: ContentView())
         }
+    }
+}
+
+
+struct GameOverView_Previews: PreviewProvider {
+    static var previews: some View {
+        GameOverView(isGameOver: .constant(true))
     }
 }
