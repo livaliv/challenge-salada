@@ -1,27 +1,35 @@
 //
-//  ViewController.swift
+//  CustomARView.swift
 //  ChallengeSalADA
 //
-//  Created by acrn on 23/02/23.
+//  Created by sml on 23/02/23.
 //
-import UIKit
-import RealityKit
-import ARKit
 
-class ViewController: UIViewController, ARSessionDelegate {
-    
-    @IBOutlet var arView: ARView!
+import ARKit
+import SwiftUI
+import RealityKit
+
+class CustomARView: ARView {
     var sphereCount = 0
+
+    required init(frame frameRect: CGRect) {
+        super.init(frame: frameRect)
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Criando a cena
-        arView.session.delegate = self
-        
-        // Timer entre a criação de esferas
+    required dynamic init?(coder decoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    convenience init() {
+        self.init(frame: UIScreen.main.bounds)
         Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(addSphere), userInfo: nil, repeats: true)
     }
+
+    func installGesturesOfEntity(entity:ModelEntity) {
+        self.installGestures(.all, for: entity)
+        entity.generateCollisionShapes(recursive: true)
+    }
+    
     
     @objc func addSphere() {
         // Criando a esfera aleatória
@@ -54,19 +62,10 @@ class ViewController: UIViewController, ARSessionDelegate {
         // Adicionando a nova caixa na cena
         let anchorEntity = AnchorEntity()
         anchorEntity.addChild(sphereEntity)
-        arView.scene.addAnchor(anchorEntity)
+        self.scene.addAnchor(anchorEntity)
         
         // Incrementando contador de esfera
         sphereCount += 1
     }
-    
-    // Implementando os métodos ARSessionDelegate
-    func session(_ session: ARSession, didFailWithError error: Error) {}
-    func sessionWasInterrupted(_ session: ARSession) {}
-    func sessionInterruptionEnded(_ session: ARSession) {}
-    func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {}
-    func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {}
-    func session(_ session: ARSession, didRemove anchors: [ARAnchor]) {}
+   
 }
-
-

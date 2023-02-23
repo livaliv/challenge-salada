@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            ARViewContainer()
+            ARContentViewRepresentable()
                 .edgesIgnoringSafeArea(.all)
             
             Button(action: {
@@ -38,78 +38,6 @@ struct ContentView: View {
         }
     }
     
-    struct ARViewContainer: UIViewRepresentable {
-        func makeUIView(context: Context) -> ARView {
-            let arView = ARView(frame: .zero)
-            // Configure the ARView blablba
-            return arView
-        }
-        
-        func updateUIView(_ uiView: ARView, context: Context) {}
-    }
-    
-    
-    struct ARContentView: View {
-        @Binding var isPresented: Bool
-        @EnvironmentObject var viewModel: ARContentViewModel
-        
-        var body: some View {
-            ZStack {
-                ARViewContainer()
-                    .edgesIgnoringSafeArea(.all)
-                
-                if viewModel.isGameOver {
-                    GameOverView(isGameOver: $viewModel.isGameOver)
-                }
-                viewModel.gameOverLink
-            }
-            .opacity(0)
-            .onAppear {
-                viewModel.setup()
-                viewModel.onGameOver = {
-                    isPresented = false
-                }
-                
-                // Fade in the content view
-                withAnimation(.easeInOut(duration: 0.5)) {
-                    self.opacity(1)
-                }
-            }
-        }
-    }
-}
-
-
-
-class ARContentViewModel: ObservableObject {
-    @Published var isGameOver = false
-    var onGameOver: (() -> Void)?
-    
-    func setup() {
-        // Setup AR content blabla
-    }
-    
-    func handleGameOver() {
-        isGameOver = true
-        onGameOver?()
-    }
-    
-    var gameOverLink: NavigationLink<EmptyView, ContentView>? {
-        let binding = Binding(
-            get: { self.isGameOver },
-            set: { self.isGameOver = $0 }
-        )
-        return NavigationLink(
-            destination: ContentView(),
-            label: { EmptyView() }
-        )
-        .onReceive($isGameOver) { _ in
-            // Perform some action when isGameOver changes
-            if self.isGameOver {
-                self.onGameOver?()
-            }
-        } as? NavigationLink<EmptyView, ContentView>
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {
