@@ -22,6 +22,17 @@ class CustomARView: ARView {
     
     convenience init() {
         self.init(frame: UIScreen.main.bounds)
+        configurationExamples()
+    }
+    
+    func configurationExamples() {
+        let configuration = ARWorldTrackingConfiguration()
+//        session.run(configuration)
+        
+//        session.run(ARFaceTrackingConfiguration())
+        
+//        session.run(ARBodyTrackingConfiguration())
+           
     }
         
     
@@ -30,8 +41,8 @@ class CustomARView: ARView {
     }
     
     func installGesturesOfEntity(entity:ModelEntity) {
-        self.installGestures(.all, for: entity)
         entity.generateCollisionShapes(recursive: true)
+        self.installGestures(.all, for: entity)
     }
     
     
@@ -69,13 +80,18 @@ class CustomARView: ARView {
 
         self.scene.addAnchor(anchorEntity)
         sphereEntity.generateCollisionShapes(recursive: true)
-
+//        installGesturesOfEntity(entity: sphereEntity)
         animateEntity(entity: sphereEntity)
         // Incrementando contador de esfera
         sphereCount += 1
     }
     
     func animateEntity(entity: ModelEntity) {
+        let animationDefinition3 = FromToByAnimation(by:Transform(translation: [0,0,3]), bindTarget: .transform, speed:  0.05)
+
+        let animationResource = try! AnimationResource.generate(with: animationDefinition3)
+        entity.playAnimation(animationResource)
+        
 //        let position = entity.position
 //        let moveUp = SIMD3<Float>(position.x, position.y + 0.02, position.z)
 //        let moveDown = SIMD3<Float>(position.x, position.y - 0.02, position.z)
@@ -85,21 +101,10 @@ class CustomARView: ARView {
 //        let animationDefinition = FromToByAnimation(from:Transform(translation:moveUp), to: Transform(translation:moveDown), bindTarget: .transform, trimDuration: duration)
 //        let secondAnimationDefinition = FromToByAnimation(from:Transform(translation:moveDown), to: Transform(translation:moveUp), bindTarget: .transform, trimDuration: duration, delay: duration)
 //
-        let animationDefinition3 = FromToByAnimation(by:Transform(translation: [0,0,3]), bindTarget: .transform, speed:  0.05)
 
 //        let animationGroupDefinition = AnimationGroup(group: [animationDefinition, secondAnimationDefinition, animationDefinition3], repeatMode: .repeat)
-
-        let animationResource = try! AnimationResource.generate(with: animationDefinition3)
-        entity.playAnimation(animationResource)
-        
-    }
     
-    func animateCloser(entity: ModelEntity) {
-        let animationDefinition = FromToByAnimation(by:Transform(translation: [0,0,2]), bindTarget: .transform, trimDuration: 13)
         
-        let animationResource = try! AnimationResource.generate(with: animationDefinition)
-        entity.playAnimation(animationResource)
-
     }
    
 }
