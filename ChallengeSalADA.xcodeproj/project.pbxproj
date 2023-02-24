@@ -17,6 +17,7 @@
 		BF2D696A29A7E9DC003E76B2 /* ARContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D696929A7E9DC003E76B2 /* ARContentViewModel.swift */; };
 		BF2D696C29A7EAAD003E76B2 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D696B29A7EAAD003E76B2 /* CustomARView.swift */; };
 		BF2D697829A805D1003E76B2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D697729A805D1003E76B2 /* Coordinator.swift */; };
+		BF6ACFD229A90C0E004F6290 /* Teste.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6ACFD129A90C0E004F6290 /* Teste.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		BF2D696929A7E9DC003E76B2 /* ARContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARContentViewModel.swift; sourceTree = "<group>"; };
 		BF2D696B29A7EAAD003E76B2 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 		BF2D697729A805D1003E76B2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		BF6ACFD129A90C0E004F6290 /* Teste.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teste.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				BF2D696929A7E9DC003E76B2 /* ARContentViewModel.swift */,
 				BF2D696B29A7EAAD003E76B2 /* CustomARView.swift */,
 				BF2D697729A805D1003E76B2 /* Coordinator.swift */,
+				BF6ACFD129A90C0E004F6290 /* Teste.swift */,
 			);
 			path = ARContentView;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				5A27A9BA29A4795300C54D7F /* GameOverView.swift in Sources */,
 				BF2D696A29A7E9DC003E76B2 /* ARContentViewModel.swift in Sources */,
 				BF2D696729A7E918003E76B2 /* ARContentView.swift in Sources */,
+				BF6ACFD229A90C0E004F6290 /* Teste.swift in Sources */,
 				5A27A9A929A4781E00C54D7F /* ChallengeSalADAApp.swift in Sources */,
 				BF2D696C29A7EAAD003E76B2 /* CustomARView.swift in Sources */,
 				BF2D696529A7E8D0003E76B2 /* ARContentViewRepresentable.swift in Sources */,

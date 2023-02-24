@@ -12,8 +12,8 @@ import SwiftUI
 struct ARContentViewRepresentable: UIViewRepresentable {
     let customArView = CustomARView()
     var gameStarted = false
-    @State var counter = 0
-
+    var counter: Counter?
+    
     func makeUIView(context: Context) -> ARView {
         context.coordinator.view = customArView
         customArView.addGestureRecognizer(UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.removeEntity)))

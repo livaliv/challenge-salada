@@ -11,12 +11,19 @@ import RealityKit
 
 struct ContentView: View {
     @State private var isShowingAR = false
-    @State var arView = ARContentViewRepresentable()
-    
+    @ObservedObject var counter = Counter()
+    @State var arView: ARContentViewRepresentable
+
+    init(isShowingAR: Bool = false, counter: Counter = Counter()) {
+        self.isShowingAR = isShowingAR
+        self.counter = counter
+        self.arView = ARContentViewRepresentable(counter: counter)
+    }
     var body: some View {
         ZStack {
             arView
                 .edgesIgnoringSafeArea(.all)
+                .environmentObject(counter)
             if !isShowingAR {
                 Button(action: {
                     self.isShowingAR = true
@@ -34,7 +41,7 @@ struct ContentView: View {
             } else {
                 VStack {
                     HStack (spacing: 10) {
-                        Text("\(arView.counter) x")
+                        Text("\(counter.counter) x")
                             .bold()
                             .font(.system(size: 36))
                         Image("lana")
@@ -50,9 +57,9 @@ struct ContentView: View {
     }
     
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
