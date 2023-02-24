@@ -16,8 +16,6 @@
 		BF2D696729A7E918003E76B2 /* ARContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D696629A7E918003E76B2 /* ARContentView.swift */; };
 		BF2D696A29A7E9DC003E76B2 /* ARContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D696929A7E9DC003E76B2 /* ARContentViewModel.swift */; };
 		BF2D696C29A7EAAD003E76B2 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D696B29A7EAAD003E76B2 /* CustomARView.swift */; };
-		BF2D697429A80239003E76B2 /* ARManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D697329A80239003E76B2 /* ARManager.swift */; };
-		BF2D697629A80257003E76B2 /* ARAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D697529A80257003E76B2 /* ARAction.swift */; };
 		BF2D697829A805D1003E76B2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D697729A805D1003E76B2 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,8 +30,6 @@
 		BF2D696629A7E918003E76B2 /* ARContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARContentView.swift; sourceTree = "<group>"; };
 		BF2D696929A7E9DC003E76B2 /* ARContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARContentViewModel.swift; sourceTree = "<group>"; };
 		BF2D696B29A7EAAD003E76B2 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
-		BF2D697329A80239003E76B2 /* ARManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARManager.swift; sourceTree = "<group>"; };
-		BF2D697529A80257003E76B2 /* ARAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAction.swift; sourceTree = "<group>"; };
 		BF2D697729A805D1003E76B2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,8 +96,6 @@
 				BF2D696429A7E8D0003E76B2 /* ARContentViewRepresentable.swift */,
 				BF2D696929A7E9DC003E76B2 /* ARContentViewModel.swift */,
 				BF2D696B29A7EAAD003E76B2 /* CustomARView.swift */,
-				BF2D697329A80239003E76B2 /* ARManager.swift */,
-				BF2D697529A80257003E76B2 /* ARAction.swift */,
 				BF2D697729A805D1003E76B2 /* Coordinator.swift */,
 			);
 			path = ARContentView;
@@ -177,7 +171,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF2D697429A80239003E76B2 /* ARManager.swift in Sources */,
 				5A27A9AB29A4781E00C54D7F /* ContentView.swift in Sources */,
 				BF2D697829A805D1003E76B2 /* Coordinator.swift in Sources */,
 				5A27A9BA29A4795300C54D7F /* GameOverView.swift in Sources */,
@@ -186,7 +179,6 @@
 				5A27A9A929A4781E00C54D7F /* ChallengeSalADAApp.swift in Sources */,
 				BF2D696C29A7EAAD003E76B2 /* CustomARView.swift in Sources */,
 				BF2D696529A7E8D0003E76B2 /* ARContentViewRepresentable.swift in Sources */,
-				BF2D697629A80257003E76B2 /* ARAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

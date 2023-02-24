@@ -10,13 +10,20 @@ import ARKit
 
 class Coordinator: NSObject {
     weak var view: CustomARView?
+    @State var counter: Int?
+    
+    init(view: CustomARView? = nil, counter: Int?) {
+        self.view = view
+        self.counter = counter
+    }
     
     @objc func removeEntity(_ recognizer: UITapGestureRecognizer) {
-        print("oi")
         guard let view = self.view else { return }
-        let teste = view.project(SIMD3<Float>(0,0,0))
-        if let entity2 = view.entity(at: teste!) as? ModelEntity {
-            print("tentei")
+        let tapLocation = recognizer.location(in: view)
+        if let entity = view.entity(at: tapLocation) as? ModelEntity
+        {
+            entity.removeFromParent()
+            counter = counter ?? 0 + 1
         }
     }
 }

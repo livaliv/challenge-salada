@@ -8,11 +8,10 @@
 import ARKit
 import SwiftUI
 import RealityKit
-import Combine
 
 class CustomARView: ARView {
     var sphereCount = 0
-
+    
     required init(frame frameRect: CGRect) {
         super.init(frame: frameRect)
     }
@@ -24,21 +23,7 @@ class CustomARView: ARView {
     convenience init() {
         self.init(frame: UIScreen.main.bounds)
     }
-    
-//    private var cancellables: Set<AnyCancellable> = []
-//
-//    func subscribeToActionScreen() {
-//        ARManager.shared
-//            .actionStream
-//            .sink { [weak self] action in
-//                switch action {
-//                case .killEnemy:
-//                    Coordinator.removeEntity()
-//                }
-//            }
-//            .store(in: &cancellables)
-//    }
-    
+        
     
     func startTimer() {
         Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(addSphere), userInfo: nil, repeats: true)
@@ -86,26 +71,34 @@ class CustomARView: ARView {
         sphereEntity.generateCollisionShapes(recursive: true)
 
         animateEntity(entity: sphereEntity)
-
         // Incrementando contador de esfera
         sphereCount += 1
     }
     
     func animateEntity(entity: ModelEntity) {
-        let position = entity.position
-        let moveUp = SIMD3<Float>(position.x, position.y + 0.02, position.z)
-        let moveDown = SIMD3<Float>(position.x, position.y - 0.02, position.z)
-        let duration = 1.3
-        let timingFunction = AnimationTimingFunction.easeInOut
-        
-        let animationDefinition = FromToByAnimation(from:Transform(translation:moveUp), to: Transform(translation:moveDown), bindTarget: .transform, trimDuration: duration)
-        let secondAnimationDefinition = FromToByAnimation(from:Transform(translation:moveDown), to: Transform(translation:moveUp), bindTarget: .transform, trimDuration: duration, delay: duration)
-        
-        let animationGroupDefinition = AnimationGroup(group: [animationDefinition, secondAnimationDefinition], repeatMode: .repeat)
+//        let position = entity.position
+//        let moveUp = SIMD3<Float>(position.x, position.y + 0.02, position.z)
+//        let moveDown = SIMD3<Float>(position.x, position.y - 0.02, position.z)
+//        let duration = 1.3
+//        let timingFunction = AnimationTimingFunction.easeInOut
+//
+//        let animationDefinition = FromToByAnimation(from:Transform(translation:moveUp), to: Transform(translation:moveDown), bindTarget: .transform, trimDuration: duration)
+//        let secondAnimationDefinition = FromToByAnimation(from:Transform(translation:moveDown), to: Transform(translation:moveUp), bindTarget: .transform, trimDuration: duration, delay: duration)
+//
+        let animationDefinition3 = FromToByAnimation(by:Transform(translation: [0,0,3]), bindTarget: .transform, speed:  0.05)
 
-        let animationResource = try! AnimationResource.generate(with: animationGroupDefinition)
+//        let animationGroupDefinition = AnimationGroup(group: [animationDefinition, secondAnimationDefinition, animationDefinition3], repeatMode: .repeat)
+
+        let animationResource = try! AnimationResource.generate(with: animationDefinition3)
         entity.playAnimation(animationResource)
         
+    }
+    
+    func animateCloser(entity: ModelEntity) {
+        let animationDefinition = FromToByAnimation(by:Transform(translation: [0,0,2]), bindTarget: .transform, trimDuration: 13)
+        
+        let animationResource = try! AnimationResource.generate(with: animationDefinition)
+        entity.playAnimation(animationResource)
 
     }
    

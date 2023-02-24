@@ -12,7 +12,7 @@ import RealityKit
 struct ContentView: View {
     @State private var isShowingAR = false
     @State var arView = ARContentViewRepresentable()
-
+    
     var body: some View {
         ZStack {
             arView
@@ -32,13 +32,19 @@ struct ContentView: View {
                 .opacity(isShowingAR ? 0 : 1) // Hide button if isShowingAR is true
                 .animation(.default)
             } else {
-                Button(action: {
-                    ARManager.shared.actionStream.send(.killEnemy)
-                }, label: {
-                    Text("ATIRA")
-                        .background(.white)
-                        .padding()
-                })
+                VStack {
+                    HStack (spacing: 10) {
+                        Text("\(arView.counter) x")
+                            .bold()
+                            .font(.system(size: 36))
+                        Image("lana")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32.0, height: 32.0)
+                        Spacer()
+                    }.padding()
+                    Spacer()
+                }
             }
         }
     }

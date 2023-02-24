@@ -9,31 +9,31 @@ import SwiftUI
 import ARKit
 import RealityKit
 
-struct ARContentView: View {
-    @Binding var isPresented: Bool
-    @EnvironmentObject var viewModel: ARContentViewModel
-
-    var body: some View {
-        ZStack {
-            ARContentViewRepresentable(gameStarted: isPresented)
-                .edgesIgnoringSafeArea(.all)
-            
-            if viewModel.isGameOver {
-                GameOverView(isGameOver: $viewModel.isGameOver)
-            }
-            viewModel.gameOverLink
-        }
-        .opacity(0)
-        .onAppear {
-            viewModel.setup()
-            viewModel.onGameOver = {
-                isPresented = false
-            }
-            
-            // Fade in the content view
-            withAnimation(.easeInOut(duration: 0.5)) {
-                self.opacity(1)
-            }
-        }
-    }
-}
+//struct ARContentView: View {
+//    @Binding var isPresented: Bool
+//    @EnvironmentObject var viewModel: ARContentViewModel
+//
+//    var body: some View {
+//        ZStack {
+//            ARContentViewRepresentable(gameStarted: isPresented)
+//                .edgesIgnoringSafeArea(.all)
+//            
+//            if viewModel.isGameOver {
+//                GameOverView(isGameOver: $viewModel.isGameOver)
+//            }
+//            viewModel.gameOverLink
+//        }
+//        .opacity(0)
+//        .onAppear {
+//            viewModel.setup()
+//            viewModel.onGameOver = {
+//                isPresented = false
+//            }
+//            
+//            // Fade in the content view
+//            withAnimation(.easeInOut(duration: 0.5)) {
+//                self.opacity(1)
+//            }
+//        }
+//    }
+//}

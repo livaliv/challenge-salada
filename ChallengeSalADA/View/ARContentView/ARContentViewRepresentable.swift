@@ -12,6 +12,7 @@ import SwiftUI
 struct ARContentViewRepresentable: UIViewRepresentable {
     let customArView = CustomARView()
     var gameStarted = false
+    @State var counter = 0
 
     func makeUIView(context: Context) -> ARView {
         context.coordinator.view = customArView
@@ -26,7 +27,7 @@ struct ARContentViewRepresentable: UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator()
+        return Coordinator(counter: counter)
     }
 
 }
